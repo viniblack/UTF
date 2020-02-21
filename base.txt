@@ -1,0 +1,21 @@
+	Id bigint primary key identity,
+	Ativo bit not null,
+	DataCadastro datetime not null,
+	DataAltercao datetime,
+	ResponsavelCadastro varchar(255) not null,
+	ResponsavelAlteracao varchar(255)
+
+
+	
+	Cac decimal(18,2),
+	TicketMedio decimal(18,2),
+	FaturamentoLiquido decimal(18,2),
+	Receita decimal(18,2),
+	Custo decimal(18,2),
+	Churn decimal(18,2), 
+	TaxaConversao decimal(18,2),
+	TaxaRejeicao decimal(18,2),
+	ProdutoPrincipal varchar(255),
+	DataFechamento datetime,
+
+
