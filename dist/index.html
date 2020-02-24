@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>UTM</title>
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"                   crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -20,44 +18,46 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Dashboard</h1>
                     <div class="card mb-4">
                         <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
                         <div class="card-body">
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Principal Produto</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Principal Produto</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Principal Produto" /></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Ticket Médio" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Receita Bruta" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="inputLastName"type="text" placeholder="Enter last name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="inputLastName"type="text" placeholder="Receita Liquida" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Cac
-                                            </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />
+                                            </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Cac" onKeyPress="return(moeda(this,'.',',',event))"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Despesa Mensal" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Churn     </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Churn Rate</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Churn Rate" data-js="porcentagem"/></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Conversão" data-js="porcentagem"/></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Rejeição" data-js="porcentagem"/></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" id="telefone" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Data" onkeypress="mascaraData(this)" /></div>
                                     </div>
+                                    <button type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -74,12 +74,12 @@
                                             <th>Ticket Médio</th>
                                             <th>Rec. Bruto</th>
                                             <th>Rec. Liquida</th>
-                                            <th>Cac</th>
-                                            <th>Custo</th>
+                                            <th>Despesa Mensal</th>
                                             <th>Churn</th>
                                             <th>Conversão</th>
                                             <th>Rejeição</th>
-                                            <th>Fechamento</th>
+                                            <th>Cac</th>
+                                            <th>Data de Fechamento</th>
                                         </tr>
                                     </thead>
                                     <tbody>
