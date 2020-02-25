@@ -145,11 +145,11 @@ if(data === null || data === undefined || data === ' ' || data === ''){
   return false
 }
 
-/* var Produto = document.getElementById('ProdutoPrincipal').value;
+var Produto = document.getElementById('ProdutoPrincipal').value;
 if(Produto === null || Produto === undefined || Produto === ' ' || Produto === ''){
-  alert('Informe o nome do produto')
+  alertCustom('Informação', 'Informe o nome do produto');
   return false
-} */
+}
 
   var data = JSON.stringify({
     "Ativo":true,
@@ -161,7 +161,7 @@ if(Produto === null || Produto === undefined || Produto === ' ' || Produto === '
     "Churn":document.getElementById('Churn').value.replace('.','').replace(',','.'),
     "TaxaConversao":document.getElementById('TaxaConversao').value.replace('.','').replace(',','.'),
     "TaxaRejeicao":document.getElementById('TaxaRejeicao').value.replace('.','').replace(',','.'),
-
+    "ProdutoPrincipal":document.getElementById('ProdutoPrincipal').value,
     "DataFechamento": data,
     "ResponsavelCadastro":"manual"
   });
@@ -178,8 +178,10 @@ xhr.setRequestHeader("Accept-Language", "pt-BR,pt,en-US,en");
 xhr.addEventListener("readystatechange", function() {
   if(this.readyState === 4) {
     var message=JSON.parse(this.responseText);
-    alert(message.mensagem);
-    location.reload();
+    alertCustom('Sucesso', message.mensagem);
+    setTimeout(() => {   
+       location.reload();
+    }, 1000);
   }
 });
 
@@ -189,39 +191,84 @@ xhr.send(data);
 
 $(document).ready(function() {
 
-  /* var xhr = new XMLHttpRequest();
-  xhr.withCredentials = false;
-  
-  xhr.open("GET", "https://localhost:44316/dashboard/DA96C8C6-C31F-43D3-9A6A-0ADB0C17E629");
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT");
-  xhr.setRequestHeader("Accept-Language", "pt-BR,pt,en-US,en");
-  
-  xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-      var message=JSON.parse(this.responseText);
-      console.log(message.mensagem);
-    }
-  });
-  
-  xhr.send(data); */
-
-
   $('#dataTableLista').DataTable( {
       "ajax": "https://localhost:44316/dashboard/DA96C8C6-C31F-43D3-9A6A-0ADB0C17E629",
+      "oLanguage": {
+        "sEmptyTable":"Nenhum registro encontrado" 
+    },
       "columns": [
-        { "data": "produtoPrincipal" },
-        { "data": "ticketMedio" },
-        { "data": "faturamentoBruto" },
-        { "data": "faturamentoLiquido" },
-        { "data": "despesaMensal" },
-        { "data": "churn" },
-        { "data": "taxaConversao" },
-        { "data": "taxaRejeicao" },
-        { "data": "cac" },
-        { "data": "dataFechamentoST" },
-        
+        {
+          "render": function (data, type, item) {
+              return item.produtoPrincipal;
+          }
+      },
+      {
+        "render": function (data, type, item) {
+            return ('R$ ' + item.ticketMedio.toFixed(2).replace('.', ','));
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return ('R$ ' + item.faturamentoBruto.toFixed(2).replace('.', ','));
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return ('R$ ' + item.faturamentoLiquido.toFixed(2).replace('.', ','));
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return ('R$ ' + item.despesaMensal.toFixed(2).replace('.', ','));
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return (item.churn.toFixed(2).replace('.', ',') + ' %');
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return (item.taxaConversao.toFixed(2).replace('.', ',')+ ' %');
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return (item.taxaRejeicao.toFixed(2).replace('.', ',')+ ' %');
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return ('R$ ' + item.cac.toFixed(2).replace('.', ','));
+        }
+      },
+      {
+        "render": function (data, type, item) {
+            return item.dataFechamentoST;
+        }
+    }
       ]
   } );
 } );
+
+$(document).on('click', '#salvardados', function() {
+  $.scrollTo($('#RelatorioMensal'), 1000);
+});
+
+$(document).on('click', '#btn-cadastrar', function() {
+ if ($('#card-body-cadastrar').is(':visible')){
+  $('#btn-cadastrar').removeClass('btn-dark').addClass('btn-info');
+  $('#btn-cadastrar').html('Cadastrar');
+  $('#card-body-cadastrar').hide(500);
+ }else{
+  $('#btn-cadastrar').removeClass('btn-info').addClass('btn-dark');
+  $('#btn-cadastrar').html('Fechar');
+  $('#card-body-cadastrar').show(500);
+}
+});
+
+function alertCustom(title, description){
+  $('#modal-alert-title').html(title);
+  $('#modal-alert-description').html(description);
+  $('#modal-alert').modal();
+}

@@ -7,78 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>UTM</title>
-   <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
+    <title>Relatório Mensal</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="img/icon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"                   crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <div id="layoutSidenav">
-        <div id="layoutSidenav_content">
+        <div id="layoutSidenav_content-center">
             <main>
                 <div class="container-fluid">
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
-                        <div class="card-body">
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>Lançamento Mensal
+                            <button id="btn-cadastrar" type="button" class="btn btn-info" style="text-align:right;float: right;">
+                                <span aria-hidden="true">Cadastrar</span>
+                              </button> 
+                        </div>
+                        <div class="card-body" id="card-body-cadastrar" style="display: none;">
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Produto Principal</label><input class="form-control py-4" id="ProdutoPrincipal" type="text" placeholder="Produto Principal" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Produto mais vendido</label><input class="form-control py-4" id="ProdutoPrincipal" type="text" placeholder="Produto mais vendido" /></div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="TicketMedio" type="text" placeholder="Ticket Médio" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="FaturamentoBruto" type="text" placeholder="Receita Bruta" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="FaturamentoLiquido"type="text" placeholder="Receita Liquida" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Cac</label><input class="form-control py-4" id="Cac" type="text" placeholder="Cac" onKeyPress="return(moeda(this,'.',',',event))"/>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="DespesaMensal" type="text" placeholder="Despesa Mensal" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group"><label class="small mb-1" for="inputLastName">Churn Rate</label><input class="form-control py-4" id="Churn" type="text" placeholder="Churn Rate" data-js="porcentagem"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="TaxaConversao" type="text" placeholder="Conversão" data-js="porcentagem"/></div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="TaxaConversao" type="text" placeholder="Taxa de Conversão" data-js="porcentagem"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="TaxaRejeicao" type="text" placeholder="Rejeição" data-js="porcentagem"/></div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="TaxaRejeicao" type="text" placeholder="Taxa de Rejeição" data-js="porcentagem"/></div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="DataFechamento" type="text" placeholder="Data" onkeypress="mascaraData(this)" /></div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="DataFechamento" type="text" placeholder="DD/MM/YYYY" onkeypress="mascaraData(this)" /></div>
                                     </div>
                                     
-                                    <button type="button" id="salvardados" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                                       <button type="button" id="salvardados" class="btn btn-primary btn-lg btn-block btn-danger">Enviar</button>
                                 </div>
                             </form>
                         </div>
                     </div>
 
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+                        <div class="card-header"><i class="fas fa-table mr-1"></i>Relatório Mensal</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTableLista" width="100%" cellspacing="0">
-                                    <thead>
+                                    <thead id="RelatorioMensal">
                                         <tr>
-                                            <th>Principal Produto</th>
+                                            <th>Produto mais vendido</th>
                                             <th>Ticket Médio</th>
                                             <th>Rec. Bruto</th>
                                             <th>Rec. Liquida</th>
@@ -102,12 +108,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                        <div class="text-muted">2017 a 2020 &copy; Copyright Fidelizar Mais - Todos os direitos reservados</div>
                     </div>
                 </div>
             </footer>
@@ -119,9 +120,25 @@
         <script src="js/scripts.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="js/datatables-demo.js"></script>
         <script src="js/index.js"></script>
     </div>
+
+    <div class="modal" id="modal-alert" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"id="modal-alert-title">Informação</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> 
+            </div>
+            <div class="modal-body">
+              <p id="modal-alert-description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>

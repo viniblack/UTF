@@ -1,0 +1,9 @@
+.btn-primary:hover {
+ background-color: #c43143;
+ border-color: #c43143;
+}
+
+.page-item.active .page-link{
+ background-color: #c43143;
+ border-color: #c43143;
+}
