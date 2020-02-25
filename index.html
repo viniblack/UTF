@@ -1,16 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
-    <meta http-equiv="refresh" content="0;url=dist/index.html">
-    <title>SB Admin</title>
-    <script language="javascript">
-        window.location.href = "dist/index.html"
-    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>UTM</title>
+   <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"                   crossorigin="anonymous"></script>
 </head>
 
-<body>
-    Go to <a href="dist/index.html">/dist/index.html</a>
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Produto Principal</label><input class="form-control py-4" id="ProdutoPrincipal" type="text" placeholder="Produto Principal" /></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="TicketMedio" type="text" placeholder="Ticket Médio" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="FaturamentoBruto" type="text" placeholder="Receita Bruta" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="FaturamentoLiquido"type="text" placeholder="Receita Liquida" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Cac</label><input class="form-control py-4" id="Cac" type="text" placeholder="Cac" onKeyPress="return(moeda(this,'.',',',event))"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="DespesaMensal" type="text" placeholder="Despesa Mensal" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Churn Rate</label><input class="form-control py-4" id="Churn" type="text" placeholder="Churn Rate" data-js="porcentagem"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="TaxaConversao" type="text" placeholder="Conversão" data-js="porcentagem"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="TaxaRejeicao" type="text" placeholder="Rejeição" data-js="porcentagem"/></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="DataFechamento" type="text" placeholder="Data" onkeypress="mascaraData(this)" /></div>
+                                    </div>
+                                    
+                                    <button type="button" id="salvardados" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTableLista" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Principal Produto</th>
+                                            <th>Ticket Médio</th>
+                                            <th>Rec. Bruto</th>
+                                            <th>Rec. Liquida</th>
+                                            <th>Despesa Mensal</th>
+                                            <th>Churn</th>
+                                            <th>Conversão</th>
+                                            <th>Rejeição</th>
+                                            <th>Cac</th>
+                                            <th>Data de Fechamento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="js/index.js"></script>
+    </div>
 </body>
 
 </html>
