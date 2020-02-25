@@ -1,5 +1,5 @@
 /* Mascara para porcentagem */ 
-const masks = {
+ const masks = {
  porcentagem (value) {
   return value
    .replace(/\D/g, '')
@@ -15,7 +15,7 @@ document.querySelectorAll('input').forEach(($input) => {
  $input.addEventListener('input', (e) => {
   e.target.value = masks[field](e.target.value)
  }, false)
-});
+}); 
 
 
 
@@ -129,3 +129,99 @@ function mascaraData(val) {
    val.value = val.value.substring(0, 10);
  return true;
 }
+
+
+document.getElementById('salvardados').onclick = function () {
+  
+var data = document.getElementById('DataFechamento').value;
+if(data !== null && data !== undefined){
+  var dia = data.split('/')[0]
+  var mes = data.split('/')[1]
+  var ano = data.split('/')[2]
+  data = ano + '-' + mes + '-' + dia
+}
+if(data === null || data === undefined || data === ' ' || data === ''){
+  alert('Informe a data de fechamento :)')
+  return false
+}
+
+/* var Produto = document.getElementById('ProdutoPrincipal').value;
+if(Produto === null || Produto === undefined || Produto === ' ' || Produto === ''){
+  alert('Informe o nome do produto')
+  return false
+} */
+
+  var data = JSON.stringify({
+    "Ativo":true,
+    "Cac":document.getElementById('Cac').value.replace('.','').replace(',','.'),
+    "TicketMedio":document.getElementById('TicketMedio').value.replace('.','').replace(',','.'),
+    "FaturamentoLiquido":document.getElementById('FaturamentoLiquido').value.replace('.','').replace(',','.'),
+    "FaturamentoBruto":document.getElementById('FaturamentoBruto').value.replace('.','').replace(',','.'),
+    "DespesaMensal":document.getElementById('DespesaMensal').value.replace('.','').replace(',','.'),
+    "Churn":document.getElementById('Churn').value.replace('.','').replace(',','.'),
+    "TaxaConversao":document.getElementById('TaxaConversao').value.replace('.','').replace(',','.'),
+    "TaxaRejeicao":document.getElementById('TaxaRejeicao').value.replace('.','').replace(',','.'),
+
+    "DataFechamento": data,
+    "ResponsavelCadastro":"manual"
+  });
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = false;
+
+xhr.open("POST", "https://localhost:44316/dashboard/DA96C8C6-C31F-43D3-9A6A-0ADB0C17E629");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT");
+xhr.setRequestHeader("Accept-Language", "pt-BR,pt,en-US,en");
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    var message=JSON.parse(this.responseText);
+    alert(message.mensagem);
+    location.reload();
+  }
+});
+
+xhr.send(data);
+}
+
+
+$(document).ready(function() {
+
+  /* var xhr = new XMLHttpRequest();
+  xhr.withCredentials = false;
+  
+  xhr.open("GET", "https://localhost:44316/dashboard/DA96C8C6-C31F-43D3-9A6A-0ADB0C17E629");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PUT");
+  xhr.setRequestHeader("Accept-Language", "pt-BR,pt,en-US,en");
+  
+  xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+      var message=JSON.parse(this.responseText);
+      console.log(message.mensagem);
+    }
+  });
+  
+  xhr.send(data); */
+
+
+  $('#dataTableLista').DataTable( {
+      "ajax": "https://localhost:44316/dashboard/DA96C8C6-C31F-43D3-9A6A-0ADB0C17E629",
+      "columns": [
+        { "data": "produtoPrincipal" },
+        { "data": "ticketMedio" },
+        { "data": "faturamentoBruto" },
+        { "data": "faturamentoLiquido" },
+        { "data": "despesaMensal" },
+        { "data": "churn" },
+        { "data": "taxaConversao" },
+        { "data": "taxaRejeicao" },
+        { "data": "cac" },
+        { "data": "dataFechamentoST" },
+        
+      ]
+  } );
+} );

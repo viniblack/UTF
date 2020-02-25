@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>UTM</title>
+   <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"                   crossorigin="anonymous"></script>
@@ -24,40 +25,47 @@
                             <form>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Principal Produto</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Principal Produto" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputFirstName">Produto Principal</label><input class="form-control py-4" id="ProdutoPrincipal" type="text" placeholder="Produto Principal" /></div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Ticket Médio" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Ticket Médio</label><input class="form-control py-4" id="TicketMedio" type="text" placeholder="Ticket Médio" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Receita Bruta" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Bruta</label><input class="form-control py-4" id="FaturamentoBruto" type="text" placeholder="Receita Bruta" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="inputLastName"type="text" placeholder="Receita Liquida" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Receita Liquida</label><input class="form-control py-4" id="FaturamentoLiquido"type="text" placeholder="Receita Liquida" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Cac
-                                            </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Cac" onKeyPress="return(moeda(this,'.',',',event))"/>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Cac</label><input class="form-control py-4" id="Cac" type="text" placeholder="Cac" onKeyPress="return(moeda(this,'.',',',event))"/>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Despesa Mensal" onKeyPress="return(moeda(this,'.',',',event))"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Despesa Mensal</label><input class="form-control py-4" id="DespesaMensal" type="text" placeholder="Despesa Mensal" onKeyPress="return(moeda(this,'.',',',event))"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Churn Rate</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Churn Rate" data-js="porcentagem"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Churn Rate</label><input class="form-control py-4" id="Churn" type="text" placeholder="Churn Rate" data-js="porcentagem"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Conversão" data-js="porcentagem"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Conversão </label><input class="form-control py-4" id="TaxaConversao" type="text" placeholder="Conversão" data-js="porcentagem"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Rejeição" data-js="porcentagem"/></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Rejeição  </label><input class="form-control py-4" id="TaxaRejeicao" type="text" placeholder="Rejeição" data-js="porcentagem"/></div>
                                     </div>
+
                                     <div class="col-md-6">
-                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Data" onkeypress="mascaraData(this)" /></div>
+                                        <div class="form-group"><label class="small mb-1" for="inputLastName">Data Fechamento</label><input class="form-control py-4" id="DataFechamento" type="text" placeholder="Data" onkeypress="mascaraData(this)" /></div>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                                    
+                                    <button type="button" id="salvardados" class="btn btn-primary btn-lg btn-block">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -67,7 +75,7 @@
                         <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTableLista" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Principal Produto</th>
@@ -83,42 +91,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Bruno Nash</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>38</td>
-                                            <td>2020/05/03</td>
-                                            <td>$163,500</td>
-                                            <td>teste</td>
-                                            <td>Software Engineer</td>
-                                            <td>38</td>
-                                            <td>London</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>38</td>
-                                            <td>Software Engineer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>38</td>
-                                            <td>Software Engineer</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -142,12 +114,12 @@
         </div>
     </div>
     <div>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+<!--         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"crossorigin="anonymous"></script> -->
+<!--         <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
