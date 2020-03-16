@@ -1,0 +1,23 @@
+post
+
+  "cac": 0,
+  "ticketMedio": 0,
+  "faturamentoLiquido": 0,
+  "faturamentoBruto": 0,
+  "receita": 0,
+  "despesaMensal": 0,
+  "churn": 0,
+  "taxaConversao": 0,
+  "taxaRejeicao": 0,
+  "produtoPrincipal": "string",
+  "dataFechamento": "2020-02-26T12:51:36.828Z",
+
+
+
+
+
+
+
+
+
+

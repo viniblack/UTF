@@ -1,9 +1,37 @@
+a {
+ color: #c43143;
+ text-decoration: none;
+ background-color: transparent;
+}
+a:hover {
+ color: #c80f24;
+ text-decoration: underline;
+}
+
+a:not([href]) {
+ color: inherit;
+ text-decoration: none;
+}
+a:not([href]):hover {
+ color: inherit;
+ text-decoration: none;
+}
+
+.btn-primary {
+ background-color: #c43143!important;
+ border-color: #c43143!important;
+}
+
 .btn-primary:hover {
- background-color: #c43143;
- border-color: #c43143;
+ background-color: #c80f24!important;
+ border-color: #c80f24!important;
 }
 
 .page-item.active .page-link{
- background-color: #c43143;
- border-color: #c43143;
+ background-color: #c80f24 !important;
+ border-color: #c80f24 !important;
+}
+
+.bg-primary {
+ background-color: #c43143 !important;
 }
